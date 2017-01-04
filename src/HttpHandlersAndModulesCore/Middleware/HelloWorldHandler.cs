@@ -21,11 +21,8 @@ namespace HttpHandlersAndModulesCore.Middleware
             await _next.Invoke(context);
 
             var response = context.Response;
-            await response.WriteAsync("<html>");
-            await response.WriteAsync("<body>");
-            await response.WriteAsync("<h1>Hello from a synchronous custom HTTP handler.</h1>");
-            await response.WriteAsync("</body>");
-            await response.WriteAsync("</html>");
+            await response.WriteAsync($"<h1>Hello from a custom HTTP handler.{context.Request.Host}, {DateTimeOffset.Now}</h1>");
+
 
             // Clean up.
         }
