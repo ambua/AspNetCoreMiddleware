@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using HttpHandlersAndModulesCore.Middleware;
 
 namespace HttpHandlersAndModulesCore
 {
@@ -47,7 +48,11 @@ namespace HttpHandlersAndModulesCore
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseMiddleware<HelloWorldHandler>();
+
             app.UseStaticFiles();
+
+            
 
             app.UseMvc(routes =>
             {
